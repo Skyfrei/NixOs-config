@@ -1,0 +1,5 @@
+## Just some notes
+
+For nvim pls clone the nvim repo and move it in your .config
+
+For waybar pls move it from hypr/ and put it in ./config
