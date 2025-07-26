@@ -1,0 +1,82 @@
+{
+  "nodes": {
+    "home-manager": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1753180535,
+        "narHash": "sha256-KEtlzMs2O7FDvciFtjk9W4hyau013Pj9qZNK9a0PxEc=",
+        "owner": "nix-community",
+        "repo": "home-manager",
+        "rev": "847711c7ffa9944b0c5c39a8342ac8eb6a9f9abc",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "home-manager",
+        "type": "github"
+      }
+    },
+    "hypr": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1753201705,
+        "narHash": "sha256-FB8oh6CDv7g10wA6E3FinqOB++akyuGS3v0i2KsDNgM=",
+        "owner": "Skyfrei",
+        "repo": "hyprland",
+        "rev": "ffbb98d123dca99082d16f057d01366122d515b1",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Skyfrei",
+        "repo": "hyprland",
+        "type": "github"
+      }
+    },
+    "nixpkgs": {
+      "locked": {
+        "lastModified": 1752950548,
+        "narHash": "sha256-NS6BLD0lxOrnCiEOcvQCDVPXafX1/ek1dfJHX1nUIzc=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "c87b95e25065c028d31a94f06a62927d18763fdf",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "root": {
+      "inputs": {
+        "home-manager": "home-manager",
+        "hypr": "hypr",
+        "nixpkgs": "nixpkgs",
+        "tmux": "tmux"
+      }
+    },
+    "tmux": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1752927457,
+        "narHash": "sha256-eitoYT/pLbIB6XQIDFCNfBytzZJFeDUpr7CVI7cQrec=",
+        "owner": "Skyfrei",
+        "repo": "tmux",
+        "rev": "a33e5a7c59d4fa84d27db4a5d7536f821efb51b8",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Skyfrei",
+        "repo": "tmux",
+        "type": "github"
+      }
+    }
+  },
+  "root": "root",
+  "version": 7
+}
