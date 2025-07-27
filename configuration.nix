@@ -113,6 +113,7 @@
 	pipewire
 	wireplumber
 	qpwgraph
+  rust-analyzer
 	];
   };
 
