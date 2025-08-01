@@ -1,4 +1,9 @@
-{ config, pkgs, inputs, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
 
 {
   # Home Manager needs a bit of information about you and the paths it should
@@ -49,31 +54,27 @@
     #   org.gradle.console=verbose
     #   org.gradle.daemon.idletimeout=3600000
     # '';
-#    ".config/nvim".source = .config/nvim;
-#    ".config/hypr".source = .config/hypr;
-#    ".config/tmux".source = .config/tmux;
-#    ".config/waybar".source = .config/waybar;
-#    ".config/pipewire".source = .config/pipewire;
+    #    ".config/nvim".source = .config/nvim;
+    #    ".config/hypr".source = .config/hypr;
+    #    ".config/tmux".source = .config/tmux;
+    #    ".config/waybar".source = .config/waybar;
+    #    ".config/pipewire".source = .config/pipewire;
   };
-    home.file.".config/hypr".source = "${inputs.hypr}";
-    home.file.".config/tmux".source = "${inputs.tmux}";
-home.file.".bashrc" = {
-	  text = ''
-		if [ -x "$(command -v tmux)" ] && [ -n "$DISPLAY" ] && [ -z "$TMUX" ]; then
-    			exec tmux new-session -A -s $USER >/dev/null 2>&1
-		fi
-	  '';
-	};
-home.file.".bash_profile" = {
-	  text = ''
-if [ -z "$DISPLAY" ] && [ "$(tty)" = "/dev/tty1" ]; then
-  exec Hyprland
-fi'';
-};
-
-
-
-
+  home.file.".config/hypr".source = "${inputs.hypr}";
+  home.file.".config/tmux".source = "${inputs.tmux}";
+  home.file.".bashrc" = {
+    text = ''
+      		if [ -x "$(command -v tmux)" ] && [ -n "$DISPLAY" ] && [ -z "$TMUX" ]; then
+          			exec tmux new-session -A -s $USER >/dev/null 2>&1
+      		fi
+      	  '';
+  };
+  home.file.".bash_profile" = {
+    text = ''
+      if [ -z "$DISPLAY" ] && [ "$(tty)" = "/dev/tty1" ]; then
+        exec Hyprland
+      fi'';
+  };
 
   # Home Manager can also manage your environment variables through
   # 'home.sessionVariables'. These will be explicitly sourced when using a
@@ -98,12 +99,12 @@ fi'';
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
   programs.neovim = {
-	enable = true;
-	extraPackages = with pkgs; [
-		gcc
-		cmake
-		gnumake
-	];
+    enable = true;
+    extraPackages = with pkgs; [
+      gcc
+      cmake
+      gnumake
+    ];
   };
 
 }
