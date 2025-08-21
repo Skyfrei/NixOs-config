@@ -76,7 +76,7 @@
     lshw
     #pkg-config
     #openssl
-    #docker
+    docker
     lldb
     nixfmt
     nixd
@@ -117,6 +117,11 @@
       qpwgraph
       rust-analyzer
       calibre
+      google-chrome
+    prismlauncher
+    texlive.combined.scheme-full
+    swww
+    kicad
     ];
   };
 
@@ -132,6 +137,11 @@
       ];
     };
   };
+programs.steam = {
+  enable = true;
+  remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
+  dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
+};
 
   home-manager = {
     extraSpecialArgs = { inherit inputs; };

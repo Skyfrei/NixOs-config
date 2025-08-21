@@ -20,22 +20,6 @@
         "type": "github"
       }
     },
-    "hypr": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1754057156,
-        "narHash": "sha256-21VW+vqr9cDakXcJH8DmHOTzak2BAgoaJrSqpjkMcdE=",
-        "owner": "Skyfrei",
-        "repo": "hyprland",
-        "rev": "73bd0253b742a194fd49ee59f7e16e5593202b83",
-        "type": "github"
-      },
-      "original": {
-        "owner": "Skyfrei",
-        "repo": "hyprland",
-        "type": "github"
-      }
-    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1753939845,
@@ -55,7 +39,6 @@
     "root": {
       "inputs": {
         "home-manager": "home-manager",
-        "hypr": "hypr",
         "nixpkgs": "nixpkgs",
         "tmux": "tmux"
       }

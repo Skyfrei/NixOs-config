@@ -2,11 +2,6 @@
   description = "Skyfrei flake";
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
-    hypr = {
-      url = "github:Skyfrei/hyprland";
-      flake = false;
-
-    };
 
     tmux = {
       url = "github:Skyfrei/tmux";
