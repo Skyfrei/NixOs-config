@@ -59,7 +59,6 @@
     gcc
     clang
     rustc
-    #python3
     go
     cargo
     cmake
@@ -74,12 +73,10 @@
     pciutils
     usbutils
     lshw
-    #pkg-config
-    #openssl
-    docker
     lldb
     nixfmt
     nixd
+    linuxPackages.perf
   ];
 
   users.users.sky = {
@@ -111,7 +108,6 @@
       lazygit
       xorg.xrandr
       p7zip
-      weechat
       pipewire
       wireplumber
       qpwgraph
@@ -122,6 +118,8 @@
     texlive.combined.scheme-full
     swww
     kicad
+    cloc
+    nodejs
     ];
   };
 
@@ -130,7 +128,7 @@
   #};
 
   boot = {
-    extraModulePackages = [ config.boot.kernelPackages.evdi ];
+    extraModulePackages = [ config.boot.kernelPackages.evdi config.boot.kernelPackages.perf ];
     initrd = {
       kernelModules = [
         "evdi"
