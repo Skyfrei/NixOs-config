@@ -76,7 +76,7 @@
     lldb
     nixfmt
     nixd
-    linuxPackages.perf
+    perf
   ];
 
   users.users.sky = {
@@ -123,9 +123,9 @@
     ];
   };
 
-  #virtualisation.docker = {
-  #  enable = true;
-  #};
+  virtualisation.docker = {
+    enable = true;
+  };
 
   boot = {
     extraModulePackages = [ config.boot.kernelPackages.evdi config.boot.kernelPackages.perf ];
