@@ -9,7 +9,6 @@
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
-    inputs.home-manager.nixosModules.default
   ];
 
   # Bootloader.
@@ -57,6 +56,7 @@
   #services.xserver.videoDrivers = [ "displaylink" "modesetting" ];
   environment.systemPackages = with pkgs; [
     gcc
+    clang-tools
     clang
     rustc
     go
@@ -78,7 +78,7 @@
     nixd
     perf
   ];
-
+   
   users.users.sky = {
     isNormalUser = true;
     description = "Skyfrei";
@@ -121,13 +121,17 @@
     cloc
     nodejs
     wireguard-tools
+    weechat
     ];
   };
-
+  programs.gnupg.agent = {
+    enable = true;
+  };
+    
   networking.wg-quick.interfaces = {
     wg0 = {
       address = [ "10.80.4.254/15"];
-      dns = [ "10.81.0.2" "10.81.0.3" "1.1.1.1" "8.8.8.8"];
+      dns = [ "10.81.0.2" "10.81.0.3" "10.81.0.25" "1.1.1.1" "8.8.8.8"];
       privateKey = "eLrOtLvoDthx6YYEK9C2zzhWvrKzQBMcxKWKUS43QmI=";
       mtu = 1280;
       
@@ -176,13 +180,6 @@ programs.steam = {
   dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
 };
 
-  home-manager = {
-    extraSpecialArgs = { inherit inputs; };
-    users = {
-      "sky" = import ./home.nix;
-
-    };
-  };
 
   services.udev.extraRules = ''
     # Kindle MTP device access
