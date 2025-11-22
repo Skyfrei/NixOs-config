@@ -56,6 +56,7 @@
   #services.xserver.videoDrivers = [ "displaylink" "modesetting" ];
   environment.systemPackages = with pkgs; [
     gcc
+    gdb
     clang-tools
     clang
     rustc
@@ -77,6 +78,7 @@
     nixfmt
     nixd
     perf
+    valgrind
   ];
    
   users.users.sky = {
@@ -122,6 +124,8 @@
     nodejs
     wireguard-tools
     weechat
+    anki
+
     ];
   };
   programs.gnupg.agent = {
