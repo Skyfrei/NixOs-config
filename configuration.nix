@@ -141,11 +141,24 @@
     weechat
     anki
 
+        wayvnc
+        openssl
     ];
   };
   programs.gnupg.agent = {
     enable = true;
   };
+
+systemd.user.services.wayvnc = {
+  description = "Wayland VNC server";
+  wantedBy = [ "graphical-session.target" ];
+  partOf = [ "graphical-session.target" ];
+  after = [ "graphical-session.target" ];
+  serviceConfig = {
+        ExecStart = "${pkgs.wayvnc}/bin/wayvnc -d -C /home/sky/.config/wayvnc/config";
+        Restart = "on-failure";
+  };
+};
     
   networking.wg-quick.interfaces = {
     wg0 = {
@@ -167,7 +180,7 @@
   };
 
   networking.firewall = {
-    allowedTCPPorts = [ 53 31337 5432 ];
+    allowedTCPPorts = [ 53 31337 5900];
     allowedUDPPorts = [ 53 51820 51980];
   };
 
