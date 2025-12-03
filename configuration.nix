@@ -40,6 +40,19 @@
     variant = "";
   };
 
+
+
+    #services.openssh = {
+    #  enable = true;
+    #  ports = [ 5432 ];
+    #  settings = {
+    #      PasswordAuthentication = false;
+    #      KbdInteractiveAuthentication = false;
+    #      PermitRootLogin = "no";
+    #      AllowUsers = [ "sky" ];
+    #  };
+    #};
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
 
   # Allow unfree packages
@@ -79,6 +92,8 @@
     nixd
     perf
     valgrind
+    sqlite
+    rustfmt
   ];
    
   users.users.sky = {
@@ -152,7 +167,7 @@
   };
 
   networking.firewall = {
-    allowedTCPPorts = [ 53 31337 ];
+    allowedTCPPorts = [ 53 31337 5432 ];
     allowedUDPPorts = [ 53 51820 51980];
   };
 
