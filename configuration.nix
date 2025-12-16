@@ -77,6 +77,7 @@
     cargo
     cmake
     git
+    git-lfs
     ninja
     gnumake
     lua
@@ -90,6 +91,7 @@
     lldb
     nixfmt
     nixd
+    dig
     perf
     valgrind
     sqlite
@@ -140,9 +142,11 @@
     wireguard-tools
     weechat
     anki
+    wayvnc
+    openssl
+    qbittorrent
+    blender
 
-        wayvnc
-        openssl
     ];
   };
   programs.gnupg.agent = {
@@ -160,42 +164,28 @@ systemd.user.services.wayvnc = {
   };
 };
     
-  networking.wg-quick.interfaces = {
-    wg0 = {
-      address = [ "10.80.4.254/15"];
-      dns = [ "10.81.0.2" "10.81.0.3" "10.81.0.25" "1.1.1.1" "8.8.8.8"];
-      privateKey = "eLrOtLvoDthx6YYEK9C2zzhWvrKzQBMcxKWKUS43QmI=";
-      mtu = 1280;
-      
-      peers = [
-        {
-          publicKey = "gwcw/BGNjOKch5LzsztHcNqpmW/NIxmDeIIfs7ElGRQ=";
-          presharedKey = "igWe6vOTJzeapmW7OGs88JBTcwTPpS4hzZVrHM1HBzk=";
-          allowedIPs = ["10.80.0.0/15" ];
-          endpoint = "128.131.169.157:51980";
-          persistentKeepalive = 25;
-        }
-      ];
-    };
-  };
+    #  networking.wg-quick.interfaces = {
+    #    wg0 = {
+    #      address = [ "10.80.4.254/15"];
+    #      dns = [ "10.81.0.2" "10.81.0.3" "10.81.0.25" "1.1.1.1" "8.8.8.8"];
+    #      privateKey = "eLrOtLvoDthx6YYEK9C2zzhWvrKzQBMcxKWKUS43QmI=";
+    #      mtu = 1280;
+    #      
+    #      peers = [
+    #        {
+    #          publicKey = "gwcw/BGNjOKch5LzsztHcNqpmW/NIxmDeIIfs7ElGRQ=";
+    #          presharedKey = "igWe6vOTJzeapmW7OGs88JBTcwTPpS4hzZVrHM1HBzk=";
+    #          allowedIPs = ["10.80.0.0/15" ];
+    #          endpoint = "128.131.169.157:51980";
+    #          persistentKeepalive = 25;
+    #        }
+    #      ];
+    #    };
+    #  };
 
   networking.firewall = {
     allowedTCPPorts = [ 53 31337 5900];
     allowedUDPPorts = [ 53 51820 51980];
-  };
-
-  virtualisation.docker = {
-    enable = true;
-    daemon.settings = {
-        dns = [ "1.1.1.1" "8.8.8.8" ];
-        log-driver = "journald";
-        registry-mirrors = [ "https://mirror.gcr.io" ];
-        storage-driver = "overlay2";
-    };
-    rootless = {
-        enable = true;
-        setSocketVariable = true;
-    };
   };
 
   boot = {
